@@ -51,7 +51,7 @@ function spotifyThis(input){
                 });
                 artistsName = artistsName.substring(0, artistsName.length - 2); 
                 console.log("Artists: ", artistsName);
-
+                console.log("From album:",song.album.name);
             })
         })
         .catch(function(err) {
