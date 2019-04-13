@@ -36,12 +36,18 @@ function runLIRI(args){
                 let url = "https://rest.bandsintown.com/artists/" + input + "/events?app_id=524629e5-647f-49ba-b51c-c67d60e6bc39&date=upcoming";
                 let getBand = await axios.get(url);
                 console.log(url);
-                getBand.data.forEach(concert => {
-                    console.log("================");
-                    console.log("Venue Name:",concert.venue.name);
-                    console.log("Venue Location:",concert.venue.city,concert.venue.country);
-                    console.log("Date of Event:",moment(concert.datetime).format('MM/DD/YYYY'))
-                 });
+                if(getBand.data.length>0){
+                    getBand.data.forEach(concert => {
+                        console.log("================");
+                        console.log("Venue Name:",concert.venue.name);
+                        console.log("Venue Location:",concert.venue.city,concert.venue.country);
+                        console.log("Date of Event:",moment(concert.datetime).format('MM/DD/YYYY'))
+                     });
+                }else{
+                    
+                     console.error("Error occured with API: No concerts found")
+                }
+                
                 
             }catch(err){
                 console.error(err);//handle error
