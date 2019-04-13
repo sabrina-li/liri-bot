@@ -35,7 +35,7 @@ function runLIRI(args){
             try{
                 let url = "https://rest.bandsintown.com/artists/" + input + "/events?app_id=524629e5-647f-49ba-b51c-c67d60e6bc39&date=upcoming";
                 let getBand = await axios.get(url);
-                console.log(url);
+                // console.log(url);
                 if(getBand.data.length>0){
                     getBand.data.forEach(concert => {
                         console.log("================");
@@ -95,7 +95,7 @@ async function movieThis(input){
 
     try{
         let url = "http://www.omdbapi.com/?t="+input+"&apikey="+appkey;
-        console.log(url);
+        // console.log(url);
         let getMovie = await axios.get(url);
         getMovie = getMovie.data;
         if(getMovie){
