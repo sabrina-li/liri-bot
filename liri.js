@@ -34,16 +34,29 @@ async function concertThis(input){
     }
     
 }
-function spotifyThis(){
+function spotifyThis(input){
     var spotify = new Spotify(keys.spotify);
-    
-    spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
-        if (err) {
-        return console.log('Error occurred: ' + err);
-        }
-   
-    console.log(data); 
-    })
+    input = input ? input: "the Sign";
+
+    console.log("Searching....",input);
+    spotify
+        .request('https://api.spotify.com/v1/search?q="'+input+'"&type=track&limit=5')
+        .then(function(data) {
+            data.tracks.items.forEach(song=>{
+                console.log("==================");
+                console.log("Song found:",song.name);
+                let artistsName = ""
+                song.artists.forEach(artist=>{
+                    artistsName+=artist.name+', '
+                });
+                artistsName = artistsName.substring(0, artistsName.length - 2); 
+                console.log("Artists: ", artistsName);
+
+            })
+        })
+        .catch(function(err) {
+            console.error('Error occurred: ' + err); 
+        });
 }
 function movieThis(){
     
