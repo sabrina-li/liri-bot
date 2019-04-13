@@ -1,0 +1,95 @@
+
+command args:concert-this,drake	================
+	Venue Name: Ziggo Dome
+	Venue Location: Amsterdam
+	Date of Event: 04/15/2019	================
+	Venue Name: Ziggo Dome
+	Venue Location: Amsterdam
+	Date of Event: 04/16/2019	================
+	Venue Name: SPORTPALEIS
+	Venue Location: Merksem
+	Date of Event: 04/19/2019	================
+	Venue Name: Ziggo Dome
+	Venue Location: Amsterdam
+	Date of Event: 04/25/2019	================
+	Venue Name: Ziggo Dome
+	Venue Location: Amsterdam
+	Date of Event: 04/26/2019	================
+	Venue Name: XS Nightclub
+	Venue Location: Las Vegas
+	Date of Event: 05/04/2019	================
+	Venue Name: XS Nightclub
+	Venue Location: Las Vegas
+	Date of Event: 05/18/2019	================
+	Venue Name: City of Rock
+	Venue Location: Rio De Janeiro
+	Date of Event: 09/27/2019
+command args:concert-this,drake
+	================
+	Venue Name: Ziggo Dome
+	Venue Location: Amsterdam
+	Date of Event: 04/15/2019
+	================
+	Venue Name: Ziggo Dome
+	Venue Location: Amsterdam
+	Date of Event: 04/16/2019
+	================
+	Venue Name: SPORTPALEIS
+	Venue Location: Merksem
+	Date of Event: 04/19/2019
+	================
+	Venue Name: Ziggo Dome
+	Venue Location: Amsterdam
+	Date of Event: 04/25/2019
+	================
+	Venue Name: Ziggo Dome
+	Venue Location: Amsterdam
+	Date of Event: 04/26/2019
+	================
+	Venue Name: XS Nightclub
+	Venue Location: Las Vegas
+	Date of Event: 05/04/2019
+	================
+	Venue Name: XS Nightclub
+	Venue Location: Las Vegas
+	Date of Event: 05/18/2019
+	================
+	Venue Name: City of Rock
+	Venue Location: Rio De Janeiro
+	Date of Event: 09/27/2019
+command args:spotify-this-song,hello
+	==================
+	Song found: Hello
+	Artists: Devan Ekambaram
+	From album: Pyaar Prema Kaadhal (Original Motion Picture Soundtrack)
+	==================
+	Song found: Hello Pilla Hello
+	Artists: Shekar Chandra, Vedala Hemachandra
+	From album: Parichayam (Original Motion Picture Soundtrack)
+	==================
+	Song found: Hello Hello
+	Artists: Papon
+	From album: Valiyavan (Original Motion Picture Soundtrack)
+	==================
+	Song found: Hello Hello
+	Artists: Ranjith
+	From album: Challenge (Original Motion Picture Soundtrack)
+	==================
+	Song found: Hello Mister
+	Artists: Pooja Vaidyanath
+	From album: Kotikokkadu (Original Motion Picture Soundtrack)
+
+command args:movie-this,tron
+	===============
+	[object Object]
+
+command args:movie-this,tron
+	===============
+	Title
+	ReleaseYear
+	IMDB Rating
+	Rotten Tomatoes Rating
+	Country
+	Language
+	Plot
+	Actors

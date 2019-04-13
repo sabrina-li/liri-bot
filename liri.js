@@ -27,6 +27,7 @@ function runLIRI(args){
             case "do-what-it-says": random(args[1]);break;
             default: console.log("invalid input!");
         }
+        writeToFile("\n\ncommand args:"+args);
     }
     
     
@@ -38,10 +39,13 @@ function runLIRI(args){
                 // console.log(url);
                 if(getBand.data.length>0){
                     getBand.data.forEach(concert => {
-                        console.log("================");
-                        console.log("Venue Name:",concert.venue.name);
-                        console.log("Venue Location:",concert.venue.city,concert.venue.country);
-                        console.log("Date of Event:",moment(concert.datetime).format('MM/DD/YYYY'))
+                        let thisconcert = ""
+                        thisconcert+="\n\t================";
+                        thisconcert+="\n\tVenue Name: "+concert.venue.name;
+                        thisconcert+="\n\tVenue Location: "+concert.venue.city,concert.venue.country;
+                        thisconcert+="\n\tDate of Event: "+ moment(concert.datetime).format('MM/DD/YYYY');
+                        console.log(thisconcert);
+                        writeToFile(thisconcert);
                      });
                 }else{
                     
@@ -68,15 +72,18 @@ function spotifyThis(input){
         .then(function(data) {
             if(data.tracks.items.length >0){
                 data.tracks.items.forEach(song=>{
-                    console.log("==================");
-                    console.log("Song found:",song.name);
+                    let thisSong = ""
+                    thisSong+="\n\t==================";
+                    thisSong+="\n\tSong found: "+song.name;
                     let artistsName = ""
                     song.artists.forEach(artist=>{
                         artistsName+=artist.name+', '
                     });
                     artistsName = artistsName.substring(0, artistsName.length - 2); 
-                    console.log("Artists: ", artistsName);
-                    console.log("From album:",song.album.name);
+                    thisSong+="\n\tArtists: "+ artistsName;
+                    thisSong+="\n\tFrom album: "+song.album.name;
+                    console.log(thisSong);
+                    writeToFile(thisSong);
                 })
             }else{
                 console.error("Error occured with API: No music found")
@@ -114,10 +121,14 @@ async function movieThis(input){
             output.Plot = getMovie.Plot;
             output.Actors = getMovie.Actors;
     
-            console.log("===============")
+            console.log("===============");
+            writeToFile("\n\t===============");
             for(key in output){
                 console.log(key,":",output[key]);
+                writeToFile("\n\t"+key," : ",output[key]);
             }
+            
+            
         }else{
             console.error("Error occured with API: No movie found")
        }
@@ -138,3 +149,12 @@ async function random(){
     runLIRI(command);
 }
 
+
+
+function writeToFile(text){
+    try {
+        fs.appendFileSync('log.txt', text);
+    } catch (err) {
+        /* Handle the error */
+    }
+}
