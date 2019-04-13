@@ -66,17 +66,23 @@ function spotifyThis(input){
     spotify
         .request('https://api.spotify.com/v1/search?q="'+input+'"&type=track&limit=5')
         .then(function(data) {
-            data.tracks.items.forEach(song=>{
-                console.log("==================");
-                console.log("Song found:",song.name);
-                let artistsName = ""
-                song.artists.forEach(artist=>{
-                    artistsName+=artist.name+', '
-                });
-                artistsName = artistsName.substring(0, artistsName.length - 2); 
-                console.log("Artists: ", artistsName);
-                console.log("From album:",song.album.name);
-            })
+            if(data.tracks.items.length >0){
+                data.tracks.items.forEach(song=>{
+                    console.log("==================");
+                    console.log("Song found:",song.name);
+                    let artistsName = ""
+                    song.artists.forEach(artist=>{
+                        artistsName+=artist.name+', '
+                    });
+                    artistsName = artistsName.substring(0, artistsName.length - 2); 
+                    console.log("Artists: ", artistsName);
+                    console.log("From album:",song.album.name);
+                })
+            }else{
+                console.error("Error occured with API: No music found")
+           }
+           
+            
         })
         .catch(function(err) {
             console.error('Error occurred: ' + err); 
@@ -92,26 +98,30 @@ async function movieThis(input){
         console.log(url);
         let getMovie = await axios.get(url);
         getMovie = getMovie.data;
-
-        let output={}
-        output.Title = getMovie.Title;
-        output.ReleaseYear = getMovie.Year;
-        output["IMDB Rating"] = getMovie.imdbRating;
-
-        RTR = getMovie.Ratings.find(function(element) {
-            return element.Source == 'Rotten Tomatoes';
-        });
+        if(getMovie){
+            let output={}
+            output.Title = getMovie.Title;
+            output.ReleaseYear = getMovie.Year;
+            output["IMDB Rating"] = getMovie.imdbRating;
+    
+            RTR = getMovie.Ratings.find(function(element) {
+                return element.Source == 'Rotten Tomatoes';
+            });
+            
+            output["Rotten Tomatoes Rating"] = RTR.Value;
+            output.Country = getMovie.Country;
+            output.Language = getMovie.Language;
+            output.Plot = getMovie.Plot;
+            output.Actors = getMovie.Actors;
+    
+            console.log("===============")
+            for(key in output){
+                console.log(key,":",output[key]);
+            }
+        }else{
+            console.error("Error occured with API: No movie found")
+       }
         
-        output["Rotten Tomatoes Rating"] = RTR.Value;
-        output.Country = getMovie.Country;
-        output.Language = getMovie.Language;
-        output.Plot = getMovie.Plot;
-        output.Actors = getMovie.Actors;
-
-        console.log("===============")
-        for(key in output){
-            console.log(key,":",output[key]);
-        }
         
     }catch(err){
         console.error(err);//handle error
